@@ -1,0 +1,9 @@
+.idea
+__pyache__
+.venv
+backend
+database
+flask
+frontend
+nginx
+tg-bot
