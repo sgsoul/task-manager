@@ -1,20 +1,12 @@
 from flask import Flask, jsonify, request, make_response
-# from flask_cors import CORS
 import psycopg2
 import uuid
 import os
 
 app = Flask(__name__)
-# cors = CORS(app, resources={"/": {"origins": "*"}})
-
 
 def get_db_connection():
     conn = psycopg2.connect(
-        # host="localhost",
-        # port="5432",
-        # database="docker_app_db",
-        # user="docker_app",
-        # password="docker_app",
         host=os.environ.get("HOST"),
         port=os.environ.get("PORT"),
         database=os.environ.get("DB"),
@@ -23,11 +15,9 @@ def get_db_connection():
     )
     return conn
 
-
 @app.route("/test", methods=["GET"])
 def testing():
     return make_response(jsonify({"Test": "OK"}), 200)
-
 
 @app.route("/api", methods=["GET"])
 def get_record():
